@@ -85,7 +85,8 @@ set nospell
 set encoding=utf-8
 "set langmenu=zh_CN.UTF-8
 "language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=utf-8,chinese,bgk,gb18030,big5,cp936,euc-jp,euc-kr,ucs-bom,latin1,
+set laststatus=2
 
 " File type related
 filetype plugin indent on
@@ -104,9 +105,13 @@ syntax on
 " Refer to: https://github.com/bpdp/vim-java
 set ofu=syntaxcomplete#Complete
 if (has("gui_running"))
-    colo bluegreen
+    colo xoria256
 else
     colo bluegreen
+endif
+
+if !has("gui_running")
+    set t_Co=256
 endif
 
 " Default Colors for CursorLine
@@ -341,10 +346,12 @@ if (has("win32"))
     "-------------------------------------------------------------------------
     " Win32
     "-------------------------------------------------------------------------
-
+    set fileencoding=chinese
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+    language messages zh_CN.utf-8
     if (has("gui_running"))
-        set guifont=Bitstream_Vera_Sans_Mono:h9:cANSI
-        set guifontwide=NSimSun:h9:cGB2312
+        set guifont=Consolas:h14
     endif
 
     " For Viki
@@ -354,14 +361,14 @@ if (has("win32"))
     set shellpipe=2>&1\|\ tee
 
     " VimTweak
-    if (has("gui_running"))
-        command -nargs=1 SetAlpha call libcallnr("vimtweak.dll",
-            \"SetAlpha", <args>)
-        command -nargs=0 TopMost call libcallnr("vimtweak.dll",
-            \"EnableTopMost", 1)
-        command -nargs=0 NoTopMost call libcallnr("vimtweak.dll",
-            \"EnableTopMost", 0)
-    endif
+"    if (has("gui_running"))
+"        command -nargs=1 SetAlpha call libcallnr("vimtweak.dll",
+"            \"SetAlpha", <args>)
+"        command -nargs=0 TopMost call libcallnr("vimtweak.dll",
+"            \"EnableTopMost", 1)
+"        command -nargs=0 NoTopMost call libcallnr("vimtweak.dll",
+"            \"EnableTopMost", 0)
+"    endif
 
 else
 

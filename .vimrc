@@ -32,6 +32,7 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'tpope/vim-fugitive'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -137,7 +138,7 @@ let g:NERDTreeWinSize=30
 
 au BufRead,BufNewFile *.gradle set filetype=groovy
 
-set foldmethod=indent
+" set foldmethod=indent
 " set foldnestmax=2
 
 let g:indentLine_leadingSpaceEnabled=1

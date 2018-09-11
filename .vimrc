@@ -33,6 +33,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'tpope/vim-fugitive'
+Plugin 'lepture/vim-jinja'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -106,6 +107,7 @@ set nu
 set sm
 set hls
 set nowrap
+set splitright
 syntax on
 
 " Refer to: https://github.com/bpdp/vim-java
@@ -146,6 +148,7 @@ let g:indentLine_leadingSpaceChar='.'
 let g:indentLine_color_term=7
 let g:indentLine_color_gui='#FFB3B3'
 " let g:indentLine_char = '|'
+let g:vim_markdown_folding_disabled = 1
 
 hi Modified guifg=black guibg=#FFA500
 set statusline=%2.2n\ %t\ %h%#Modified#%m%r%*%=%l%L\ %2c\ %P
@@ -178,9 +181,12 @@ nmap <C-Up> :move .-2<CR>
 nmap <F12> :set nu!<CR>
 imap <F12> :set nu!<CR>
 
+" Terminal
+nmap <C-c> :vert term<CR>
+
 " Toggle NERDTree window
 nmap <silent> <F9> :NERDTreeToggle<CR>
-nmap <silent> <C-O> :NERDTreeToggle<CR><ESC>
+nmap <silent> <C-o> :NERDTreeToggle<CR>
 
 " miniBufExploer config
 let g:miniBufExplMapWindowNavVim=1
@@ -192,6 +198,8 @@ let g:miniBufExplModSelTarget=1
 nmap <S-Tab> :bn<CR>
 nmap <S-Left> :bp<CR>
 nmap <S-Right> :bn<CR>
+nmap <C-[> :bp<CR>
+nmap <C-]> :bn<CR>
 
 " Toggle Tagbar
 nmap <C-t> :TagbarToggle<CR>
@@ -342,7 +350,7 @@ autocmd! BufRead,BufNewFile *.bbs call BBSMode()
 autocmd! FileType mail call MailMode()
 
 " XML
-autocmd! FileType html,xml,yaml setlocal sw=2 ts=2
+autocmd! FileType pug,html,xml,yaml setlocal sw=2 ts=2
 
 " FencView
 let g:fencview_autodetect=0

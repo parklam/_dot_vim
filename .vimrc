@@ -136,9 +136,10 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:NERDTreeDirArrows=0
-let g:NERDTreeWinSize=30
+let g:NERDTreeWinSize=32
 
 au BufRead,BufNewFile *.gradle set filetype=groovy
+au BufWinEnter * if (&buftype == "terminal") | setlocal nobuflisted | endif
 
 " set foldmethod=indent
 " set foldnestmax=2
@@ -173,6 +174,17 @@ map! <Esc>[A <C-Up>
 map! <Esc>[B <C-Down>
 map! <Esc>[D <C-Left>
 map! <Esc>[C <C-Right>
+
+nmap <Leader>1 :1b<CR>
+nmap <Leader>2 :2b<CR>
+nmap <Leader>3 :3b<CR>
+nmap <Leader>4 :4b<CR>
+nmap <Leader>5 :5b<CR>
+nmap <Leader>6 :6b<CR>
+nmap <Leader>7 :7b<CR>
+nmap <Leader>8 :8b<CR>
+nmap <Leader>9 :9b<CR>
+nmap <Leader>0 :10b<CR>
 " Move lines
 nmap <C-Down> :move .+1<CR>
 nmap <C-Up> :move .-2<CR>
@@ -196,10 +208,10 @@ let g:miniBufExplModSelTarget=1
 
 " buffer change
 nmap <S-Tab> :bn<CR>
-nmap <S-Left> :bp<CR>
-nmap <S-Right> :bn<CR>
-nmap <C-[> :bp<CR>
-nmap <C-]> :bn<CR>
+"nmap <S-Left> :bp<CR>
+"nmap <S-Right> :bn<CR>
+"nmap <C-[> :bp<CR>
+"nmap <C-]> :bn<CR>
 
 " Toggle Tagbar
 nmap <C-t> :TagbarToggle<CR>
@@ -350,7 +362,7 @@ autocmd! BufRead,BufNewFile *.bbs call BBSMode()
 autocmd! FileType mail call MailMode()
 
 " XML
-autocmd! FileType pug,html,xml,yaml setlocal sw=2 ts=2
+autocmd! FileType javascript,pug,html,xml,yaml setlocal sw=2 ts=2
 
 " FencView
 let g:fencview_autodetect=0
